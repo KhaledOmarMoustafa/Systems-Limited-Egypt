@@ -1,4 +1,4 @@
-***Keyword Search Automation Project***
+**Keyword Search Automation Project**
 
 Project Overview
 This project automates the process of searching for a specific keyword on Google, navigating through search result pages, counting the result records on both the second and third pages, and comparing these counts. The goal is to verify that the number of records on the second page is consistent with the number of records on the third page.
