@@ -20,12 +20,9 @@ public class SearchGoogle extends PreRequisites{
     }
 
 
-    public void searchGoogle(String searchKeyWord, String secondPageNumberOfRecord , String thirdPageNumberOfRecords) throws IOException {
+    public void searchGoogle(String searchKeyWord, String secondPageNumberOfRecord, String thirdPageNumberOfRecords) throws IOException, InterruptedException {
 
         logger.log(Status.INFO, "Starting Google Search for: " + searchKeyWord);
-
-
-
 
 
         //sending data from the excel sheet to the element which is the google search bar
@@ -57,21 +54,23 @@ public class SearchGoogle extends PreRequisites{
 
             //checking if its the second page then to print the records in it and make sure that its the second by asserting
             if(z==1) {
-                String pageText = driver.findElement(By.xpath("//a[@aria-label=\"Page 2\"]")).toString();
-                System.out.println(pageText);
+                WebElement pageElement = driver.findElement(By.xpath("//a[@aria-label='Page 2']"));
 
-                //int startIndex = pageText.indexOf("Page ");
-                String pageText2 = pageText.substring(102,103);
-                //  String theNumberofThePage = pageText2.substring(1);
+                // Extract the page number dynamically
+                String pageText = pageElement.getAttribute("aria-label");
+                System.out.println("Full text of the element: " + pageText);
 
-                System.out.println("theNumberofThePage:"+pageText2);
+                // Assuming "Page 2" is the text, extract the numeric part
+                String pageNumber = pageText.replaceAll("[^0-9]", ""); // Removes non-numeric characters
+                int page = Integer.parseInt(pageNumber);
 
-
-                int pageNumber = Integer.parseInt(pageText2);
-                clickSecondPage.click();
+                System.out.println("Extracted page number: " + page);
 
                 //checking if the second page is the one that i clicked
-                Assert.assertEquals(pageNumber,2);
+                Assert.assertEquals(page, 2); // Verify the page number
+                clickSecondPage.click();
+
+
                 logger.log(Status.PASS, "The Page Number is  : " + pageNumber);
 
                 //storing the search results table in a variable and then checking how many records does it display
@@ -92,24 +91,25 @@ public class SearchGoogle extends PreRequisites{
                 logger.log(Status.PASS, "Second Page - Total records: " + secondPageNumberOfRecord);
 
 
-
                 //checking if its the third page then to print the records in it and make sure that its the third by asserting
-            }else{
-                String pageText = driver.findElement(By.xpath("//a[@aria-label=\"Page 3\"]")).toString();
-                System.out.println(pageText);
+            } else {
+                WebElement pageElement = driver.findElement(By.xpath("//a[@aria-label='Page 3']"));
 
-                //int startIndex = pageText.indexOf("Page ");
-                String pageText2 = pageText.substring(102,103);
-                //  String theNumberofThePage = pageText2.substring(1);
+                // Extract the page number dynamically
+                String pageText = pageElement.getAttribute("aria-label");
+                System.out.println("Full text of the element: " + pageText);
 
-                System.out.println("theNumberofThePage:"+pageText2);
+                // Assuming "Page 3" is the text, extract the numeric part
+                String pageNumber = pageText.replaceAll("[^0-9]", ""); // Removes non-numeric characters
+                int page = Integer.parseInt(pageNumber);
 
-                int pageNumber = Integer.parseInt(pageText2);
-
-                clickSecondPage.click();
+                System.out.println("Extracted page number: " + page);
 
                 //checking if the second page is the one that i clicked
-                Assert.assertEquals(pageNumber,3);
+                Assert.assertEquals(page, 3); // Verify the page number
+                clickSecondPage.click();
+
+
                 logger.log(Status.PASS, "The Page Number is  : " + pageNumber);
 
                 //storing the search results table in a variable and then checking how many records does it display
