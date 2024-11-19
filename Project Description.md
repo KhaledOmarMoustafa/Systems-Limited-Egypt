@@ -34,8 +34,65 @@ Util: Contains utility classes like logging and screenshot helpers.
 *DataProviders: Provides test data from Excel sheets using the Data-Driven Testing (DDT) approach.
 Test Execution
 
+**How to Run the Project**
+Pre-Requisites
+Java Development Kit (JDK): Ensure JDK 8 or later is installed.
+Maven: Install Maven for dependency management.
+IDE: Use an IDE like IntelliJ IDEA or Eclipse for editing and running the project.
+WebDriver Binaries: Ensure the appropriate WebDriver executables (e.g., ChromeDriver, GeckoDriver, EdgeDriver) are available in your system's PATH or configured in the code.
+Excel File: Verify that the input Excel file (New Microsoft Excel Worksheet.xlsx) exists at the specified path and contains valid data.
+Steps to Run
 
-*To run the tests, the project uses TestNG with Cucumber. The test can be executed through Maven using the following command:
+*Clone the Repository:*
+git clone https://github.com/KhaledOmarMoustafa/Systems-Limited-Egypt.git
+cd Systems-Limited-Egypt
 
-"mvn test"
-This will trigger the execution of Cucumber feature files through the TestRunner class, and generate an Extent Report summarizing the test results.
+
+*Configure the Browser:*
+Open the OpenBrowser.feature file.
+Set the browser parameter to the desired browser (e.g., chrome, firefox, edge).
+
+*Run the Tests:*
+Using the IDE:
+Open the project in your IDE.
+Run the TestNG.xml file by click the run in the top and i set it to locate the testng.xml path .
+
+*Using Maven:*
+mvn test
+
+*Test Execution Logs:*
+Logs will be displayed in the console for tracking the progress.
+Screenshots will be saved in the specified directory.
+Accessing the Reports
+Extent Report
+Location of the Report:
+After test execution, the Extent Report is generated as an HTML file named extent-report.html in the project root directory.
+How to View the Report:
+Open the extent-report.html file in any web browser.
+Navigate through the test execution summary, detailed logs, screenshots, and pass/fail status of each test step.
+
+
+**How the Project Works**
+*Data-Driven Testing:*
+
+Test data (search keywords) is read from the Excel file.
+The number of records on the second and third pages is written back to the Excel file for verification.
+
+*Search Automation:*
+
+The browser navigates to Google.
+The specified keyword is entered into the search bar.
+Results on the second and third pages are retrieved and counted.
+
+*Validation:*
+
+The number of records on the second page is compared to the third page.
+TestNG assertions are used to ensure correctness.
+
+*Screenshots:*
+
+Screenshots are taken at various stages, such as after opening the browser, performing the search, and navigating through pages.
+
+*Reporting:*
+
+The Extent Report provides a comprehensive view of test execution, including logs, screenshots, and assertions.
