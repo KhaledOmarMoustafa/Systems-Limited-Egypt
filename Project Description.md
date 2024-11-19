@@ -27,12 +27,12 @@ Tools and Frameworks Used
 *Java: The programming language used to write the test automation code.
 *Screenshots: Screenshots are captured at different stages of the test execution to provide a visual record of the process and capture errors if any occur.
 
-*StepDefinition: Contains the Java methods that define the behavior described in the feature files.
-*PageObject: Contains page classes representing web pages, with methods for interacting with elements on each page.
-*TestRunner: The main class to trigger the Cucumber tests and integrate with TestNG.
-Util: Contains utility classes like logging and screenshot helpers.
-*DataProviders: Provides test data from Excel sheets using the Data-Driven Testing (DDT) approach.
-Test Execution
+*StepDefinition:* Contains the Java methods that define the behavior described in the feature files.
+*PageObject:* Contains page classes representing web pages, with methods for interacting with elements on each page.
+*TestRunner:* The main class to trigger the Cucumber tests and integrate with TestNG.
+*DataProviders:* Provides test data from Excel sheets using the Data-Driven Testing (DDT) approach.
+
+**Test Execution**
 
 **How to Run the Project**
 Pre-Requisites
